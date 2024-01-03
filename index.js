@@ -23,12 +23,22 @@ const persons = [
       "number": "39-23-6423122",
       "id": 4
     }
-  ]
+]
 
 app.get( '/api/persons' ,(request,response)=>{
     response.json(persons)
 })
 
+app.get('/info',(request,response) => {
+    response.send(
+        `
+        <div>
+            <p>phonebook has info for ${persons.length} people</p>
+            ${new Date()}
+        </div>
+        `
+    )
+})
 
 const PORT = 3001
 app.listen(PORT,()=>{
